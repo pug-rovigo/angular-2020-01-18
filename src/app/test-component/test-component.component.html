@@ -1,0 +1,21 @@
+<h4>{{ service.Title }}</h4>
+<p>Seconds {{ service.Seconds | async }}</p>
+<p>Seconds {{ (service.SecondsCass | async).seconds }}</p>
+<p>Minutes {{ (service.SecondsCass | async).minutes }}</p>
+<p>Double Seconds {{ doubleSeconds | testPipes:4 }}</p>
+
+<div [ngStyle]="{ 'background-color': 'blue', 'color': 'white', 'width': wid}">
+    Clock
+</div>
+
+<div style="color: red;" *ngIf="(service.Seconds | async) % 2 != 0">
+    Dispari!
+</div>
+
+<div style="color: blue;" *ngIf="(service.Seconds | async) % 2 == 0">
+    Pari!
+</div>
+
+<div style="background-color: silver; width: 200px; height: 20px; line-height: 20px; text-align: center;" (click)="reset()">
+Reset
+</div>
